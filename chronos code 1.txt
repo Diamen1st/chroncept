@@ -1,0 +1,1499 @@
+-- phpMyAdmin SQL Dump
+-- version 4.3.8
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 07, 2016 at 06:15 AM
+-- Server version: 5.5.51-38.2
+-- PHP Version: 5.4.31
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `techwins_chrono_new`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_articles`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_articles` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `article_heading` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `article_created_date` date NOT NULL,
+  `punch_line` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `hash_tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `reference_credit` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '1',
+  `vote` int(11) NOT NULL,
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_articles`
+--
+
+INSERT INTO `ch_articles` (`id`, `user_id`, `timeline_id`, `article_heading`, `article_created_date`, `punch_line`, `description`, `start_date`, `end_date`, `hash_tag`, `reference_credit`, `status`, `vote`, `updated`) VALUES
+(8, 13, 42, 'Lorem ispum Art5', '2016-08-11', 'test', 'It is a long established fact that a reader will be distracted by the readable content of a page', '2015-03-03', '2014-03-03', 'test', 'test', 1, 0, '2016-09-18 05:35:47'),
+(9, 13, 39, 'Lorem ispum Art6', '2016-08-11', 'test', 'It is a long established fact that a reader will be distracted by the readable content of a page', '2015-03-03', '2014-03-03', 'test', 'test', 1, 0, '2016-09-18 05:35:53'),
+(10, 4, 12, 'Lorem ispum Art7', '2016-08-11', 'test', 'It is a long established fact that a reader will be distracted by the readable content of a page', '2015-03-03', '2014-03-03', 'test', 'test', 1, 0, '2016-09-06 19:11:56'),
+(11, 13, 37, 'Lorem ispum Art8', '2016-08-11', 'test', 'It is a long established fact that a reader will be distracted by the readable content of a page', '2015-03-03', '2014-03-03', 'test', 'test', 1, 0, '2016-09-19 16:13:42'),
+(13, 2, 12, 'xxxx-AA', '2016-09-11', 'xxx', 'x\r\nx\r\nx\r\nx', '2006-01-01', '2010-10-18', 'xxxxxxxxxxxx', 'xxxxxxxx', 1, 0, '2016-09-11 12:57:59'),
+(14, 2, 12, 'xxxxx-zzz1', '2016-09-11', 'xxxxpp', 'XXXXXXXX\r\nXXXXXXXXXXXX\r\nXXXXXXXXXXXXXX', '2009-03-01', '2012-05-04', 'THIS IS TESTING', 'XXX-X-X-X', 1, 0, '2016-09-11 14:23:50'),
+(15, 2, 13, 'xxxx-AA-xxxxx', '2016-09-11', 'xxx', 'dsd', '2014-03-02', '2015-03-03', 'sdsd', 'xxxxxxxx', 1, 0, '2016-09-11 15:53:22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_article_discussion_boards`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_article_discussion_boards` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `entry_date` date NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_article_discussion_boards`
+--
+
+INSERT INTO `ch_article_discussion_boards` (`id`, `article_id`, `user_id`, `entry_date`, `message`) VALUES
+(1, 9, 7, '2016-04-22', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n '),
+(2, 9, 7, '2016-04-22', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n'),
+(3, 9, 7, '2016-04-22', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n'),
+(4, 9, 7, '2016-04-22', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e'),
+(5, 9, 1, '2016-04-22', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e\r\n\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e\r\n\r\n'),
+(6, 46, 7, '2016-04-22', 't is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal'),
+(7, 46, 7, '2016-04-22', 't is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal\r\nt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal\r\n\r\nt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal\r\n\r\n'),
+(8, 46, 0, '2016-04-23', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n'),
+(9, 46, 0, '2016-04-23', 'This is the long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal\r\n'),
+(10, 2, 4, '2016-08-06', 'testing art');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_article_media`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_article_media` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `media_type` int(11) NOT NULL DEFAULT '1',
+  `media_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `caption` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` enum('0','1') COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=168 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_article_media`
+--
+
+INSERT INTO `ch_article_media` (`id`, `article_id`, `media_type`, `media_link`, `caption`, `status`) VALUES
+(1, 3, 0, 'media_1470350395.jpg', 'test', '0'),
+(2, 4, 0, 'media_1470351689.jpg', 'test1', '0'),
+(3, 4, 0, 'media_1470351689.jpg', 'test2', '0'),
+(4, 5, 0, '', '', '0'),
+(5, 6, 0, 'media_1470946844.jpg', 'xxxx', '0'),
+(6, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(7, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(8, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(9, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(10, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(11, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(12, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(13, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(14, 14, 1, 'test', '', '0'),
+(15, 14, 0, 'media_1473599253.png', 'XCVCVCVCVCVCVCV', '0'),
+(16, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(17, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(18, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(19, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(20, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(21, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(22, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(23, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(24, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(25, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(26, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(27, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(28, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(29, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(30, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(31, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(32, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(33, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(34, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(35, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(36, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(37, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(38, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(39, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(40, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(41, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(42, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(43, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(44, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(45, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(46, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(47, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(48, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(49, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(50, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(51, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(52, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(53, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(54, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(55, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(56, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(57, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(58, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(59, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(60, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(61, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(62, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(63, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(64, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(65, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(66, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(67, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(68, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(69, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(70, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(71, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(72, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(73, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(74, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(75, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(76, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(77, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(78, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(79, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(80, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(81, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(82, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(83, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(84, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(85, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(86, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(87, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(88, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(89, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(90, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(91, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(92, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(93, 14, 1, 'test', '', '0'),
+(94, 14, 0, 'media_1473599198.png', 'XCVCVCVCVCVCVCV', '0'),
+(95, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(96, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(97, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(98, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(99, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(100, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(101, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(102, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(103, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(104, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(105, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(106, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(107, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(108, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(109, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(110, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(111, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(112, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(113, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(114, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(115, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(116, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(117, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(118, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(119, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(120, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(121, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(122, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(123, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(124, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(125, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(126, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(127, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(128, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(129, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(130, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(131, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(132, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(133, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(134, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(135, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(136, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(137, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(138, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(139, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(140, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(141, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(142, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(143, 14, 0, 'media_1473599198.png', 'XXXXXXXXX', '0'),
+(144, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(145, 14, 0, 'media_1473599198.png', 'XXXXXXX', '0'),
+(146, 14, 0, 'media_1473599198.png', 'XXXXXXXXXXXX', '0'),
+(147, 14, 0, '', 'XXXXXXXXX', '0'),
+(148, 14, 0, 'media_1473599198.png', 'XXXX', '0'),
+(149, 14, 0, 'media_1473603830.png', '1234', '0'),
+(150, 14, 0, 'media_1473603830.png', '1234567', '0'),
+(151, 14, 0, 'media_1473603830.png', '123456789', '0'),
+(166, 15, 0, 'media_1473609133_7.png', 'xxxxxxxxx', '0'),
+(165, 15, 0, 'media_1473609202_7.png', 'xxxx', '0'),
+(164, 15, 0, 'media_1473609133_8.png', 'xxxxxx', '0'),
+(167, 15, 1, 'youtubome.c', 'sdsdsd', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_article_ratings`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_article_ratings` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_article_ratings`
+--
+
+INSERT INTO `ch_article_ratings` (`id`, `article_id`, `user_id`) VALUES
+(1, 5, 4),
+(2, 5, 4),
+(3, 5, 4),
+(4, 5, 4),
+(5, 5, 4),
+(6, 5, 4),
+(7, 5, 4),
+(8, 5, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_article_reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_article_reviews` (
+  `id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_categories`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_categories` (
+  `id` int(10) unsigned NOT NULL,
+  `parent_id` int(10) DEFAULT NULL,
+  `lft` int(10) DEFAULT NULL,
+  `rght` int(10) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT ''
+) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_categories`
+--
+
+INSERT INTO `ch_categories` (`id`, `parent_id`, `lft`, `rght`, `name`) VALUES
+(1, NULL, 1, 18, 'History'),
+(32, 0, 205, 206, 'News \\ Current Events'),
+(78, 31, 110, 111, 'Anthropologist'),
+(79, 31, 112, 113, 'Architect'),
+(76, 31, 106, 107, 'Actor'),
+(77, 31, 108, 109, 'Animator'),
+(31, 0, 105, 204, 'People'),
+(80, 31, 114, 115, 'Astrologer'),
+(22, NULL, 19, 70, 'Entertainment'),
+(18, NULL, 71, 96, 'Science'),
+(17, NULL, 97, 104, 'Expertise'),
+(38, 1, 16, 17, 'Diplomatic History'),
+(39, 22, 24, 25, 'Court Entertainment'),
+(26, 1, 4, 5, 'Geographical History'),
+(27, 22, 20, 21, 'Entertainment lists by countryâ€Ž'),
+(28, 22, 22, 23, 'Entertainment lists by franchiseâ€Ž'),
+(29, 18, 72, 73, 'Social science'),
+(30, 18, 74, 75, 'Journal science'),
+(33, 1, 6, 7, 'Intellectual history'),
+(34, 1, 8, 9, 'Economic History'),
+(35, 1, 10, 11, 'Cultural History'),
+(36, 1, 12, 13, 'Social History'),
+(37, 1, 14, 15, 'Political History'),
+(40, 22, 26, 27, 'Public Punishment'),
+(41, 22, 28, 29, 'Children''s Entertainment'),
+(42, 22, 30, 31, 'Banquets'),
+(43, 22, 32, 33, 'Music'),
+(44, 22, 34, 35, 'Games'),
+(81, 31, 116, 117, 'Astronomer'),
+(46, 22, 36, 37, 'Comedy'),
+(47, 22, 38, 39, 'Performance'),
+(48, 22, 40, 41, 'Storytelling'),
+(49, 22, 42, 43, 'Theatre'),
+(50, 22, 44, 45, 'Cinema\\ Film'),
+(51, 22, 46, 47, 'Dance'),
+(52, 22, 48, 49, 'Animals'),
+(53, 22, 50, 51, 'Circus'),
+(54, 22, 52, 53, 'Magic'),
+(55, 22, 54, 55, 'Street Performance'),
+(56, 22, 56, 57, 'Parades'),
+(57, 22, 58, 59, 'FireWorks'),
+(58, 22, 60, 61, 'Sport'),
+(59, 22, 62, 63, 'Fairs, Exposition,Shopping'),
+(60, 22, 64, 65, 'Stadium Concerts'),
+(61, 22, 66, 67, 'Architecture'),
+(62, 22, 68, 69, 'Industry'),
+(63, 18, 76, 77, 'Chemistry'),
+(64, 18, 78, 79, 'Physics'),
+(65, 18, 80, 81, 'Earth Science'),
+(66, 18, 82, 83, 'Space Science'),
+(67, 18, 84, 85, 'Biology'),
+(68, 18, 86, 87, 'Engineering'),
+(69, 18, 88, 89, 'Health Care'),
+(70, 18, 90, 91, 'Interdisciplinary'),
+(71, 18, 92, 93, 'Philosophy History'),
+(72, 18, 94, 95, 'Mathematics'),
+(73, 17, 98, 99, 'Academic'),
+(74, 17, 100, 101, 'Experienced'),
+(75, 17, 102, 103, 'Courses'),
+(82, 31, 118, 119, 'Athlete'),
+(83, 31, 120, 121, 'Biochemist'),
+(84, 31, 122, 123, 'Banker'),
+(85, 31, 124, 125, 'Biologist'),
+(86, 31, 126, 127, 'Captain'),
+(87, 31, 128, 129, 'Choreographer'),
+(88, 31, 130, 131, 'Composer'),
+(89, 31, 132, 133, 'Computer Engineer'),
+(90, 31, 134, 135, 'Dancer'),
+(91, 31, 136, 137, 'Director'),
+(92, 31, 138, 139, 'Disc-Jockey'),
+(93, 31, 140, 141, 'Environmentalist'),
+(94, 31, 142, 143, 'Economist'),
+(95, 31, 144, 145, 'Editor'),
+(96, 31, 146, 147, 'Electrician'),
+(97, 31, 148, 149, 'Engineer'),
+(98, 31, 150, 151, 'Faith Healer'),
+(99, 31, 152, 153, 'Farmer'),
+(100, 31, 154, 155, 'Fashion Designer'),
+(101, 31, 156, 157, 'Geneticist'),
+(102, 31, 158, 159, 'Geographer'),
+(103, 31, 160, 161, 'Geographer'),
+(104, 31, 162, 163, 'Geologist'),
+(105, 31, 164, 165, 'Geophysicist'),
+(106, 31, 166, 167, 'Government Official'),
+(107, 31, 168, 169, 'Historian'),
+(108, 31, 170, 171, 'Judge'),
+(109, 31, 172, 173, 'Lecturer'),
+(110, 31, 174, 175, 'Manager'),
+(111, 31, 176, 177, 'Mathematician'),
+(112, 31, 178, 179, 'Microbiologist'),
+(113, 31, 180, 181, 'Musician'),
+(114, 31, 182, 183, 'Nutritionist'),
+(115, 31, 184, 185, 'Pharmacist'),
+(116, 31, 186, 187, 'Philosopher'),
+(117, 31, 188, 189, 'Physicist'),
+(118, 31, 190, 191, 'Police Officer'),
+(119, 31, 192, 193, 'Political Scientist'),
+(120, 31, 194, 195, 'Radio Personality'),
+(121, 31, 196, 197, 'Television Personality'),
+(122, 31, 198, 199, 'Singer'),
+(123, 31, 200, 201, 'Sociologist'),
+(124, 31, 202, 203, 'Song Writer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_categories_old`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_categories_old` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL COMMENT '0->inactive,1->active'
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_categories_old`
+--
+
+INSERT INTO `ch_categories_old` (`id`, `category_name`, `parent_id`, `status`) VALUES
+(2, 'test', 0, 1),
+(3, 'test2', 0, 1),
+(4, 'sub2', 2, 1),
+(5, 'sub Cat2', 3, 0),
+(6, 'sub cat 22', 3, 0),
+(7, 'XXXx', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_contact`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_contact` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_contact`
+--
+
+INSERT INTO `ch_contact` (`id`, `name`, `email`, `message`) VALUES
+(1, 'dfsdf', 'sdfdsf@dsfsdf.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(2, 'test', 'test@test.comm', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n'),
+(3, 'test raj', 'test@test.comm', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n'),
+(9, 'jaatin', 'jatin95017@gmail.com', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n'),
+(7, 'Jatin', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(10, 'test', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(11, 'JATIN', 'jatin95017@gmail.com', 't is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n\r\nMany desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.'),
+(12, 'Jaitn testing', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.'),
+(13, 'Jaitn testing T', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(14, 'Jaitn testing T2', 'jatin95017@gmail.com', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n'),
+(15, 'JATIN', 'jatin95017@gmail.com', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.\r\n'),
+(16, 'Ankit', 'jatin95017@gmail.com', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. \r\n\r\nLorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen bookLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard \r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable.'),
+(17, 'Rajat', 'jatin95017@gmail.com', 'This is testing msg'),
+(18, 'mehtew', 'jatin95017@gmail.com', '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br>\r\n<br>\r\n\r\nLorem Ipsum has been the industry''s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen bookLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry''s standard <br>\r\n<br>\r\n\r\n\r\nIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.<br>\r\n<br>\r\n\r\n\r\nThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don''t look even slightly believable.</p>\r\n'),
+(19, 'Testing123', 'jatin95017@gmail.com', 'This is testingmsg'),
+(20, 'Gaurav', 'jatin95017@gmail.com', 'this is tesign'),
+(21, 'sarat', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(22, 'xxxxx', 'jatin95017@gmail.com', 'Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy.\r\n\r\n'),
+(23, 'XXXXXA', 'jatin95017@gmail.com', 'THIS IS YTESTING'),
+(24, 'XXXXXXX-1', 'jatin95017@gmail.com', 'THIS IS TESTING XXXXX-1'),
+(25, 'guest', 'jatin95017@gmail.com', 'This s old news'),
+(26, 'Mahesh', 'jatin95017@gmail.com', 'xxxxxxxxxxxxxx\r\nxxxxxxxxxxxxxxxxxxxxxx\r\nxxxxxxxxxxxxxxxxxxxxxxxxxxx'),
+(27, 'XXX2', 'jatin95017@gmail.com', 'this is xxx1122222'),
+(28, 'XXXXX3', 'jatin95017@gmail.com', 'THIS IS XXXX3333'),
+(29, 'gagan', 'jatin95017@gmail.com', 'this is testing'),
+(30, 'xxxcccc', 'jatin95017@gmail.com', 'this is testing'),
+(31, 'Datson', 'jatin95017@gmail.com', 'yup this is testing'),
+(32, 'KR. MALHOTRA', 'jatin95017@gmail.com', 'this i stesitng'),
+(33, 'MISS POOJA', 'jatin95017@gmail.com', 'this i stesting'),
+(34, 'Rithesg', 'jatin95017@gmail.com', 'this is tesign');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_countries`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_countries` (
+  `id` int(11) NOT NULL,
+  `country_code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `country_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=250 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_countries`
+--
+
+INSERT INTO `ch_countries` (`id`, `country_code`, `country_name`) VALUES
+(4, 'AF', 'Afghanistan'),
+(5, 'AL', 'Albania'),
+(6, 'DZ', 'Algeria'),
+(7, 'DS', 'American Samoa'),
+(8, 'AD', 'Andorra'),
+(9, 'AO', 'Angola'),
+(10, 'AI', 'Anguilla'),
+(11, 'AQ', 'Antarctica'),
+(12, 'AG', 'Antigua and Barbuda'),
+(13, 'AR', 'Argentina'),
+(14, 'AM', 'Armenia'),
+(15, 'AW', 'Aruba'),
+(16, 'AU', 'Australia'),
+(17, 'AT', 'Austria'),
+(18, 'AZ', 'Azerbaijan'),
+(19, 'BS', 'Bahamas'),
+(20, 'BH', 'Bahrain'),
+(21, 'BD', 'Bangladesh'),
+(22, 'BB', 'Barbados'),
+(23, 'BY', 'Belarus'),
+(24, 'BE', 'Belgium'),
+(25, 'BZ', 'Belize'),
+(26, 'BJ', 'Benin'),
+(27, 'BM', 'Bermuda'),
+(28, 'BT', 'Bhutan'),
+(29, 'BO', 'Bolivia'),
+(30, 'BA', 'Bosnia and Herzegovina'),
+(31, 'BW', 'Botswana'),
+(32, 'BV', 'Bouvet Island'),
+(33, 'BR', 'Brazil'),
+(34, 'IO', 'British Indian Ocean Territory'),
+(35, 'BN', 'Brunei Darussalam'),
+(36, 'BG', 'Bulgaria'),
+(37, 'BF', 'Burkina Faso'),
+(38, 'BI', 'Burundi'),
+(39, 'KH', 'Cambodia'),
+(40, 'CM', 'Cameroon'),
+(41, 'CA', 'Canada'),
+(42, 'CV', 'Cape Verde'),
+(43, 'KY', 'Cayman Islands'),
+(44, 'CF', 'Central African Republic'),
+(45, 'TD', 'Chad'),
+(46, 'CL', 'Chile'),
+(47, 'CN', 'China'),
+(48, 'CX', 'Christmas Island'),
+(49, 'CC', 'Cocos (Keeling) Islands'),
+(50, 'CO', 'Colombia'),
+(51, 'KM', 'Comoros'),
+(52, 'CG', 'Congo'),
+(53, 'CK', 'Cook Islands'),
+(54, 'CR', 'Costa Rica'),
+(55, 'HR', 'Croatia (Hrvatska)'),
+(56, 'CU', 'Cuba'),
+(57, 'CY', 'Cyprus'),
+(58, 'CZ', 'Czech Republic'),
+(59, 'DK', 'Denmark'),
+(60, 'DJ', 'Djibouti'),
+(61, 'DM', 'Dominica'),
+(62, 'DO', 'Dominican Republic'),
+(63, 'TP', 'East Timor'),
+(64, 'EC', 'Ecuador'),
+(65, 'EG', 'Egypt'),
+(66, 'SV', 'El Salvador'),
+(67, 'GQ', 'Equatorial Guinea'),
+(68, 'ER', 'Eritrea'),
+(69, 'EE', 'Estonia'),
+(70, 'ET', 'Ethiopia'),
+(71, 'FK', 'Falkland Islands (Malvinas)'),
+(72, 'FO', 'Faroe Islands'),
+(73, 'FJ', 'Fiji'),
+(74, 'FI', 'Finland'),
+(75, 'FR', 'France'),
+(76, 'FX', 'France, Metropolitan'),
+(77, 'GF', 'French Guiana'),
+(78, 'PF', 'French Polynesia'),
+(79, 'TF', 'French Southern Territories'),
+(80, 'GA', 'Gabon'),
+(81, 'GM', 'Gambia'),
+(82, 'GE', 'Georgia'),
+(83, 'DE', 'Germany'),
+(84, 'GH', 'Ghana'),
+(85, 'GI', 'Gibraltar'),
+(86, 'GK', 'Guernsey'),
+(87, 'GR', 'Greece'),
+(88, 'GL', 'Greenland'),
+(89, 'GD', 'Grenada'),
+(90, 'GP', 'Guadeloupe'),
+(91, 'GU', 'Guam'),
+(92, 'GT', 'Guatemala'),
+(93, 'GN', 'Guinea'),
+(94, 'GW', 'Guinea-Bissau'),
+(95, 'GY', 'Guyana'),
+(96, 'HT', 'Haiti'),
+(97, 'HM', 'Heard and Mc Donald Islands'),
+(98, 'HN', 'Honduras'),
+(99, 'HK', 'Hong Kong'),
+(100, 'HU', 'Hungary'),
+(101, 'IS', 'Iceland'),
+(102, 'IN', 'India'),
+(103, 'IM', 'Isle of Man'),
+(104, 'ID', 'Indonesia'),
+(105, 'IR', 'Iran (Islamic Republic of)'),
+(106, 'IQ', 'Iraq'),
+(107, 'IE', 'Ireland'),
+(108, 'IL', 'Israel'),
+(109, 'IT', 'Italy'),
+(110, 'CI', 'Ivory Coast'),
+(111, 'JE', 'Jersey'),
+(112, 'JM', 'Jamaica'),
+(113, 'JP', 'Japan'),
+(114, 'JO', 'Jordan'),
+(115, 'KZ', 'Kazakhstan'),
+(116, 'KE', 'Kenya'),
+(117, 'KI', 'Kiribati'),
+(118, 'KP', 'Korea, Democratic People''s Republic of'),
+(119, 'KR', 'Korea, Republic of'),
+(120, 'XK', 'Kosovo'),
+(121, 'KW', 'Kuwait'),
+(122, 'KG', 'Kyrgyzstan'),
+(123, 'LA', 'Lao People''s Democratic Republic'),
+(124, 'LV', 'Latvia'),
+(125, 'LB', 'Lebanon'),
+(126, 'LS', 'Lesotho'),
+(127, 'LR', 'Liberia'),
+(128, 'LY', 'Libyan Arab Jamahiriya'),
+(129, 'LI', 'Liechtenstein'),
+(130, 'LT', 'Lithuania'),
+(131, 'LU', 'Luxembourg'),
+(132, 'MO', 'Macau'),
+(133, 'MK', 'Macedonia'),
+(134, 'MG', 'Madagascar'),
+(135, 'MW', 'Malawi'),
+(136, 'MY', 'Malaysia'),
+(137, 'MV', 'Maldives'),
+(138, 'ML', 'Mali'),
+(139, 'MT', 'Malta'),
+(140, 'MH', 'Marshall Islands'),
+(141, 'MQ', 'Martinique'),
+(142, 'MR', 'Mauritania'),
+(143, 'MU', 'Mauritius'),
+(144, 'TY', 'Mayotte'),
+(145, 'MX', 'Mexico'),
+(146, 'FM', 'Micronesia, Federated States of'),
+(147, 'MD', 'Moldova, Republic of'),
+(148, 'MC', 'Monaco'),
+(149, 'MN', 'Mongolia'),
+(150, 'ME', 'Montenegro'),
+(151, 'MS', 'Montserrat'),
+(152, 'MA', 'Morocco'),
+(153, 'MZ', 'Mozambique'),
+(154, 'MM', 'Myanmar'),
+(155, 'NA', 'Namibia'),
+(156, 'NR', 'Nauru'),
+(157, 'NP', 'Nepal'),
+(158, 'NL', 'Netherlands'),
+(159, 'AN', 'Netherlands Antilles'),
+(160, 'NC', 'New Caledonia'),
+(161, 'NZ', 'New Zealand'),
+(162, 'NI', 'Nicaragua'),
+(163, 'NE', 'Niger'),
+(164, 'NG', 'Nigeria'),
+(165, 'NU', 'Niue'),
+(166, 'NF', 'Norfolk Island'),
+(167, 'MP', 'Northern Mariana Islands'),
+(168, 'NO', 'Norway'),
+(169, 'OM', 'Oman'),
+(170, 'PK', 'Pakistan'),
+(171, 'PW', 'Palau'),
+(172, 'PS', 'Palestine'),
+(173, 'PA', 'Panama'),
+(174, 'PG', 'Papua New Guinea'),
+(175, 'PY', 'Paraguay'),
+(176, 'PE', 'Peru'),
+(177, 'PH', 'Philippines'),
+(178, 'PN', 'Pitcairn'),
+(179, 'PL', 'Poland'),
+(180, 'PT', 'Portugal'),
+(181, 'PR', 'Puerto Rico'),
+(182, 'QA', 'Qatar'),
+(183, 'RE', 'Reunion'),
+(184, 'RO', 'Romania'),
+(185, 'RU', 'Russian Federation'),
+(186, 'RW', 'Rwanda'),
+(187, 'KN', 'Saint Kitts and Nevis'),
+(188, 'LC', 'Saint Lucia'),
+(189, 'VC', 'Saint Vincent and the Grenadines'),
+(190, 'WS', 'Samoa'),
+(191, 'SM', 'San Marino'),
+(192, 'ST', 'Sao Tome and Principe'),
+(193, 'SA', 'Saudi Arabia'),
+(194, 'SN', 'Senegal'),
+(195, 'RS', 'Serbia'),
+(196, 'SC', 'Seychelles'),
+(197, 'SL', 'Sierra Leone'),
+(198, 'SG', 'Singapore'),
+(199, 'SK', 'Slovakia'),
+(200, 'SI', 'Slovenia'),
+(201, 'SB', 'Solomon Islands'),
+(202, 'SO', 'Somalia'),
+(203, 'ZA', 'South Africa'),
+(204, 'GS', 'South Georgia South Sandwich Islands'),
+(205, 'ES', 'Spain'),
+(206, 'LK', 'Sri Lanka'),
+(207, 'SH', 'St. Helena'),
+(208, 'PM', 'St. Pierre and Miquelon'),
+(209, 'SD', 'Sudan'),
+(210, 'SR', 'Suriname'),
+(211, 'SJ', 'Svalbard and Jan Mayen Islands'),
+(212, 'SZ', 'Swaziland'),
+(213, 'SE', 'Sweden'),
+(214, 'CH', 'Switzerland'),
+(215, 'SY', 'Syrian Arab Republic'),
+(216, 'TW', 'Taiwan'),
+(217, 'TJ', 'Tajikistan'),
+(218, 'TZ', 'Tanzania, United Republic of'),
+(219, 'TH', 'Thailand'),
+(220, 'TG', 'Togo'),
+(221, 'TK', 'Tokelau'),
+(222, 'TO', 'Tonga'),
+(223, 'TT', 'Trinidad and Tobago'),
+(224, 'TN', 'Tunisia'),
+(225, 'TR', 'Turkey'),
+(226, 'TM', 'Turkmenistan'),
+(227, 'TC', 'Turks and Caicos Islands'),
+(228, 'TV', 'Tuvalu'),
+(229, 'UG', 'Uganda'),
+(230, 'UA', 'Ukraine'),
+(231, 'AE', 'United Arab Emirates'),
+(232, 'GB', 'United Kingdom'),
+(233, 'US', 'United States'),
+(234, 'UM', 'United States minor outlying islands'),
+(235, 'UY', 'Uruguay'),
+(236, 'UZ', 'Uzbekistan'),
+(237, 'VU', 'Vanuatu'),
+(238, 'VA', 'Vatican City State'),
+(239, 'VE', 'Venezuela'),
+(240, 'VN', 'Vietnam'),
+(241, 'VG', 'Virgin Islands (British)'),
+(242, 'VI', 'Virgin Islands (U.S.)'),
+(243, 'WF', 'Wallis and Futuna Islands'),
+(244, 'EH', 'Western Sahara'),
+(245, 'YE', 'Yemen'),
+(246, 'YU', 'Yugoslavia'),
+(247, 'ZR', 'Zaire'),
+(248, 'ZM', 'Zambia'),
+(249, 'ZW', 'Zimbabwe');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_fav_timelines`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_fav_timelines` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_fav_timelines`
+--
+
+INSERT INTO `ch_fav_timelines` (`id`, `user_id`, `timeline_id`) VALUES
+(1, 13, 42),
+(2, 13, 37),
+(3, 13, 12),
+(4, 6, 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_feeds`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_feeds` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_feeds`
+--
+
+INSERT INTO `ch_feeds` (`id`, `name`, `description`, `link`, `created_at`, `user_id`) VALUES
+(6, 'Great &charming 2', 'Lets create history and', 'https://uxmag.com/articles/the-news-feed ', '0000-00-00 00:00:00', 0),
+(5, 'Great & charming', 'The news feed is becoming the default model for presenting digital content across all platforms platforms.\r\n', 'https://uxmag.com/articles/the-news-feed', '0000-00-00 00:00:00', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_qualifications`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_qualifications` (
+  `id` int(11) NOT NULL,
+  `qualifications` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_qualifications`
+--
+
+INSERT INTO `ch_qualifications` (`id`, `qualifications`) VALUES
+(5, 'MBA'),
+(6, 'BSC'),
+(7, 'PHD'),
+(8, 'Certificate'),
+(14, 'BA'),
+(11, 'Amateur'),
+(12, 'Novice'),
+(13, 'Certification');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_roles`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_roles` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `is_active` tinyint(1) DEFAULT '0',
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `created_by` int(10) DEFAULT NULL,
+  `modified_by` int(10) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ch_roles`
+--
+
+INSERT INTO `ch_roles` (`id`, `name`, `is_active`, `created`, `modified`, `created_by`, `modified_by`) VALUES
+(1, 'Administrator', 1, NULL, NULL, NULL, NULL),
+(2, 'Member', 1, '2016-03-15 00:00:00', '2016-03-16 00:00:00', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timelines`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timelines` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `heading` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `timeline_period_id` int(11) NOT NULL,
+  `time_span` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_span_year` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `end_span_year` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `reference_credit` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `vote` int(11) NOT NULL,
+  `hash_tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(2) NOT NULL DEFAULT '0',
+  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `timeline_format` tinyint(2) NOT NULL DEFAULT '3' COMMENT '1,2,3,4,5 as in design checkboxes respectively',
+  `no_of_viewed` int(11) NOT NULL,
+  `no_of_likes` int(11) NOT NULL,
+  `average_rating` decimal(3,2) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_timelines`
+--
+
+INSERT INTO `ch_timelines` (`id`, `user_id`, `category_id`, `heading`, `timeline_period_id`, `time_span`, `start_span_year`, `end_span_year`, `start_date`, `end_date`, `description`, `reference_credit`, `vote`, `hash_tag`, `status`, `updated`, `timeline_format`, `no_of_viewed`, `no_of_likes`, `average_rating`) VALUES
+(12, 2, 2, 'TESTING', 1, '2', '', '', '2016-01-17', '2016-12-31', 'It is a long established fact that a reader will be distracted by the readable content of a page', 'dsdsd', 0, 'nkjkjkjkk', 1, '2016-09-15 21:16:17', 2, 2, 29, '0.00'),
+(13, 2, 1, 'Time line 1', 1, '1', '6', '7', '2016-03-01', '2016-02-03', 'It is a long established fact that a reader will be distracted by the readable content of a page', 'test', 0, 'sdsd', 1, '2016-09-20 15:54:33', 5, 3, 0, '5.00'),
+(16, 4, 2, 'Timeline 2', 3, '2', '2', '0', '2013-04-02', '2016-01-01', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\n', 'test', 0, 'tesjkk', 0, '2016-09-15 20:38:13', 3, 5, 0, '0.00'),
+(17, 2, 2, 'WWW(USA TRADE CENTER)', 3, '1', '', '', '2016-03-05', '2016-03-04', 'Testing Description Testing Description Testing Description Testing DescriptionTesting Dererescriptiondfdfdfdf', 'Testing Refrence creditdfdfdf', 0, 'Testing tags', 0, '2016-09-15 20:38:24', 3, 0, 0, '0.00'),
+(18, 2, 8, 'XXXXXX-1s', 0, '2', '', '', '2016-03-02', '2016-02-02', 'XXXXX\r\nXXXXXXXXXXXXXXXsX\r\nXXXXXXXXXXXXXXXXXXXX\r\n\r\nssX', 'XXXXs', 0, 'xxxxs', 0, '2016-09-15 20:38:35', 4, 0, 0, '0.00'),
+(19, 4, 9, 'XXX-2', 0, '1', '', '', '2016-02-02', '2016-01-01', 'Testing Description Testing Description Testing Description Testing DescriptionTesting Description', 'xxxx', 0, 'xxxx', 0, '2016-09-15 20:38:41', 3, 0, 0, '0.00'),
+(20, 4, 2, 'XXXXSER', 0, '1', '', '', '2016-02-01', '2016-04-04', 'XXXX Testing Description Testing Description Testing De...', 'XXX', 0, 'XXX', 0, '2016-09-15 20:38:58', 3, 0, 0, '0.00'),
+(21, 4, 2, 'xxxx', 0, '1', '2', '3', '2016-02-01', '2016-02-04', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\n', 'sfdsfs', 0, 'cccc', 0, '2016-09-15 20:39:06', 3, 0, 0, '0.00'),
+(25, 8, 9, 'WORLD WAR 2', 0, '1', '1939', '1945', '2016-09-01', '2016-09-02', 'CRITICAL WAR  Testing Description Testing Description Testing Description Testing DescriptionTesting Description', 'NONE', 0, '', 0, '2016-09-15 20:39:14', 1, 0, 0, '0.00'),
+(26, 8, 9, 'WORLD WAR 22', 0, '1', '1939', '1945', '2016-09-01', '2016-09-02', 'CRITICAL WAR  Testing Description Testing Description Testing Description Testing DescriptionTesting Description', 'NONE', 0, '', 0, '2016-09-15 20:39:21', 1, 0, 0, '0.00'),
+(27, 4, 1, 'News and old nd new', 0, '2', '', '', '2016-06-17', '2016-02-02', 'Testing Description Testing Description Testing Description Testing DescriptionTesting DescriptionTesting Description Testing Description Testing Description Testing DescriptionTesting Description', 'test', 0, 'test tags', 0, '2016-09-15 20:40:22', 5, 0, 0, '0.00'),
+(28, 8, 2, 'bio1', 0, '1', '1879', '1955', '2016-03-18', '2016-04-18', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]', 'wikipedia', 0, 'genius, mathematician, physicist, nobel prize winner for physics, ', 0, '2016-09-15 20:40:31', 1, 0, 1, '0.00'),
+(29, 8, 2, 'bio', 0, '1', '1879', '1955', '2016-03-18', '2016-04-18', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]', 'wikipedia', 0, 'genius, mathematician, physicist, nobel prize winner for physics, ', 0, '2016-09-15 20:40:38', 3, 0, 0, '0.00'),
+(30, 4, 18, 'AAlbert einstein', 0, '1', '', '', '2016-03-14', '2016-04-19', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]', 'wikipediatestinf', 0, 'Physics Nobel Prize Winner, Genuis, Physicist, German, Jewish', 1, '2016-08-23 21:41:19', 1, 0, 0, '0.00'),
+(31, 8, 18, 'albert einstein2', 0, '1', '1879', '1955', '2016-03-14', '2016-04-19', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]', 'wikipedia', 0, 'Physics Nobel Prize Winner, Genuis, Physicist, German, Jewish', 0, '2016-09-15 20:40:49', 2, 0, 1, '0.00'),
+(32, 8, 18, 'albert einsteint', 0, '1', '1879', '1955', '2016-03-14', '2016-04-19', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]', 'wikipedia', 0, 'Physics Nobel Prize Winner, Genuis, Physicist, German, Jewish', 1, '2016-08-23 21:41:03', 3, 0, 0, '0.00'),
+(33, 4, 2, 'test timeline ', 0, '1', '3', '4', '2016-02-16', '2016-03-03', 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, ultrices nec, mauris.\n\n', 'this is testing  credit  ', 0, '', 1, '2016-08-23 19:12:14', 3, 0, 0, '0.00'),
+(34, 4, 23, 'timeline2', 0, '2', '', '', '2016-04-07', '2016-04-04', 'Testing Description Testing Description Testing Description Testing DescriptionTesting DescriptionTesting Description Testing Description Testing Description Testing DescriptionTesting DescriptionTesting Description Testing Description Testing Description Testing DescriptionTesting Description', 'XXXX', 0, 'XXXXXXXXXXXX', 1, '2016-08-23 19:14:03', 3, 0, 0, '0.00'),
+(35, 2, 23, 'ABC', 0, '1', '17', '8556', '2016-02-18', '2016-03-18', 'xxx\r\nx\r\nx\r\nx', '234', 0, 'ssss', 1, '2016-09-11 16:03:39', 2, 0, 0, '0.00'),
+(36, 2, 1, 'ABC2A', 0, '2', '', '', '2016-03-04', '2016-03-03', 'csdsdsd', 'xxcccx', 0, 'xxcvvvv', 1, '2016-09-11 16:08:27', 2, 0, 0, '0.00'),
+(37, 2, 1, 'xxxxzzzz', 0, '2', '', '', '2016-03-03', '2016-03-03', 'fdfdfdf', 'ddfd', 0, 'xxxxs', 1, '2016-10-02 15:02:54', 2, 0, 5, '4.00'),
+(38, 2, 2, 'albert einstein', 0, '1', '1879', '1955', '2016-03-14', '2016-04-18', 'Albert Einstein (/ËˆaÉªnstaÉªn/;[4] German: [ËˆalbÉ›ÉÌ¯t ËˆaÉªnÊƒtaÉªn] ( listen); 14 March 1879 â€“ 18 April 1955) was a German-born theoretical physicist. He developed the general theory of relativity, one of the two pillars of modern physics (alongside quantum mechanics).[1][5]:274 Einstein''s work is also known for its influence on the philosophy of science.[6][7] Einstein is best known in popular culture for his massâ€“energy equivalence formula E = mc2 (which has been dubbed "the world''s most famous equation").[8] He received the 1921 Nobel Prize in Physics for his "services to theoretical physics", in particular his discovery of the law of the photoelectric effect, a pivotal step in the evolution of quantum theory.[9]\r\n\r\nNear the beginning of his career, Einstein thought that Newtonian mechanics was no longer enough to reconcile the laws of classical mechanics with the laws of the electromagnetic field. This led to the development of his special theory of relativity. He realized, however, that the principle of relativity could also be extended to gravitational fields, and with his subsequent theory of gravitation in 1916, he published a paper on general relativity. He continued to deal with problems of statistical mechanics and quantum theory, which led to his explanations of particle theory and the motion of molecules. He also investigated the thermal properties of light which laid the foundation of the photon theory of light. In 1917, Einstein applied the general theory of relativity to model the large-scale structure of the universe.[10][11]\r\n\r\nHe was visiting the United States when Adolf Hitler came to power in 1933 and, being Jewish, did not go back to Germany, where he had been a professor at the Berlin Academy of Sciences. He settled in the U.S., becoming an American citizen in 1940.[12] On the eve of World War II, he endorsed a letter to President Franklin D. Roosevelt alerting him to the potential development of "extremely powerful bombs of a new type" and recommending that the U.S. begin similar research. This eventually led to what would become the Manhattan Project. Einstein supported defending the Allied forces, but largely denounced the idea of using the newly discovered nuclear fission as a weapon. Later, with the British philosopher Bertrand Russell, Einstein signed the Russellâ€“Einstein Manifesto, which highlighted the danger of nuclear weapons. Einstein was affiliated with the Institute for Advanced Study in Princeton, New Jersey, until his death in 1955.\r\n\r\nEinstein published more than 300 scientific papers along with over 150 non-scientific works.[10][13] On 5 December 2014, universities and archives announced the release of Einstein''s papers, comprising more than 30,000 unique documents.[14][15] Einstein''s intellectual achievements and originality have made the word "Einstein" synonymous with "genius".[16]', 'wikipedia', 0, 'Physics Nobel Prize Winner, Genuis, Physicist, German, Jewish', 1, '2016-09-14 11:45:50', 2, 0, 2, '0.00'),
+(39, 13, 1, 'XxxxAncxxx', 0, '2', '', '', '2016-05-03', '2016-06-05', 'Testxxxx', 'Test', 0, 'Ssss', 1, '2016-09-20 15:23:34', 4, 125, 0, '4.00'),
+(40, 13, 29, 'ABC-XXX', 0, '2', '', '', '2016-01-01', '2016-04-04', 'xxxxxx\r\nx\r\nxxxxxxxxxxx', 'xxxxx', 0, 'xxxx', 0, '2016-09-15 20:40:11', 2, 0, 0, '0.00'),
+(42, 13, 1, 'SS-XXX-XX', 0, '1', '3', '3', '2016-03-02', '2016-03-05', '<p>xddsdsdsdsdsds</p>\r\n', 'xxsss', 0, 'xxxxxx', 1, '2016-09-20 15:05:18', 2, 200, 103, '3.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_boards`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_boards` (
+  `id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `comment` text COLLATE utf8_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='use to store discussion board per timeline';
+
+--
+-- Dumping data for table `ch_timeline_boards`
+--
+
+INSERT INTO `ch_timeline_boards` (`id`, `timeline_id`, `comment`, `user_id`, `created`) VALUES
+(1, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n', 7, '2016-04-22'),
+(2, 14, 'this is test data', 7, '2016-04-22'),
+(7, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.', 1, '2016-04-22'),
+(6, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n\r\nSuspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.', 7, '2016-04-22'),
+(8, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e', 7, '2016-04-22'),
+(9, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, e', 7, '2016-04-22'),
+(10, 15, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum\r\n', 7, '2016-04-22'),
+(11, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n', 7, '2016-04-22'),
+(12, 14, 'testdsfdfdsf', 7, '2016-04-23'),
+(13, 14, 'Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui. Phasellus mi sapien, hendrerit lacinia, elementum in, pretium sed, nulla. Suspendisse dolor pede, tincidunt quis, pulvinar eu, ultrices nec, mauris. Suspendisse mollis augue sit amet dui.\r\n', 0, '2016-04-23'),
+(14, 20, 'testing', 4, '2016-08-06'),
+(15, 20, 'test223', 4, '2016-08-06'),
+(16, 20, 'testing', 4, '2016-08-06'),
+(17, 12, 'sddfds', 0, '2016-09-06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_discussion_board`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_discussion_board` (
+  `id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `entry_date` date NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_formats`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_formats` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_likes`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_likes` (
+  `id` int(5) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `timeline_id` int(10) NOT NULL,
+  `like` int(10) NOT NULL,
+  `un-like` int(10) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ch_timeline_likes`
+--
+
+INSERT INTO `ch_timeline_likes` (`id`, `user_id`, `timeline_id`, `like`, `un-like`) VALUES
+(28, 4, 12, 20, 0),
+(27, 4, 12, 19, 0),
+(26, 4, 12, 19, 0),
+(25, 4, 12, 18, 0),
+(24, 4, 12, 18, 0),
+(23, 4, 12, 17, 0),
+(22, 4, 12, 17, 0),
+(21, 4, 12, 16, 0),
+(20, 4, 12, 16, 0),
+(19, 4, 12, 16, 0),
+(18, 4, 12, 16, 0),
+(17, 4, 12, 15, 0),
+(16, 4, 12, 14, 0),
+(15, 4, 12, 13, 0),
+(29, 4, 12, 19, 0),
+(30, 4, 12, 16, 0),
+(31, 4, 12, 17, 0),
+(32, 4, 12, 18, 0),
+(33, 4, 12, 19, 0),
+(34, 4, 12, 20, 0),
+(35, 4, 12, 20, 0),
+(36, 4, 12, 21, 0),
+(37, 4, 12, 22, 0),
+(38, 4, 12, 23, 0),
+(39, 4, 12, 24, 0),
+(40, 4, 12, 25, 0),
+(41, 4, 12, 26, 0),
+(42, 4, 12, 27, 0),
+(43, 4, 12, 28, 0),
+(44, 4, 12, 29, 0),
+(45, 13, 28, 1, 0),
+(46, 13, 28, 1, 0),
+(47, 2, 38, 1, 0),
+(48, 2, 38, 2, 0),
+(49, 6, 31, 1, 0),
+(50, 13, 42, 101, 0),
+(51, 13, 42, 101, 0),
+(52, 13, 42, 102, 0),
+(53, 13, 42, 103, 0),
+(54, 13, 37, 1, 0),
+(55, 13, 37, 2, 0),
+(56, 13, 37, 3, 0),
+(57, 13, 37, 4, 0),
+(58, 13, 37, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_media`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_media` (
+  `id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `media_type` int(11) NOT NULL DEFAULT '1' COMMENT '0=image,1=video',
+  `media_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `caption` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` enum('0','1') COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=141 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_timeline_media`
+--
+
+INSERT INTO `ch_timeline_media` (`id`, `timeline_id`, `media_type`, `media_link`, `caption`, `status`) VALUES
+(10, 5, 0, 'media_1469955823.jpg', 'testingt', '0'),
+(9, 5, 0, 'media_1469955823.jpg', 'testing', '0'),
+(12, 6, 0, 'media_1470077136.jpg', 'sdsd', '0'),
+(13, 7, 0, 'media_1470077369.jpg', 'cxcxc', '0'),
+(14, 8, 0, 'media_1470077494.jpg', 'xcxcxc', '0'),
+(15, 9, 0, 'media_1470077583.jpg', 'dfdff', '0'),
+(17, 10, 0, 'media_1470077794.jpg', 'dfdfdffdf', '0'),
+(18, 10, 0, 'media_1470077862.jpg', 'dsdsd', '0'),
+(19, 11, 0, 'media_1470079890.jpg', 'dfdfd', '0'),
+(20, 11, 0, 'media_1470079890.jpg', 'dfdfdfdfd', '0'),
+(34, 27, 0, 'media_1470946065.jpg', 'XX1', '0'),
+(78, 13, 0, 'media_1470427233.jpg', 'test1', '0'),
+(24, 16, 0, 'media_1470427568.jpg', 'test34', '0'),
+(76, 17, 1, 'test', 'xx', '0'),
+(62, 18, 0, '', '5', '0'),
+(27, 19, 0, 'media_1470507329.jpg', 'xxxx', '0'),
+(28, 20, 0, 'media_1470507827.jpg', 'IMAGE1', '0'),
+(29, 21, 0, 'media_1470508854.jpg', 'dsdfsdf', '0'),
+(127, 12, 0, 'media_1473609574_9.png', 'XXXX', '0'),
+(35, 33, 0, 'media_1471368633.jpg', 'test', '0'),
+(36, 33, 0, 'media_1471368633.jpg', 'test23', '0'),
+(37, 34, 0, 'media_1471368793.jpg', 'dfsdf', '0'),
+(38, 34, 0, 'media_1471368793.jpg', 'tesdfsd', '0'),
+(39, 34, 1, 'test', 'test', '0'),
+(40, 30, 0, '', '', '0'),
+(61, 18, 0, '', '4', '0'),
+(60, 18, 0, '', '3', '0'),
+(59, 18, 0, '', '2', '0'),
+(58, 18, 0, '', '1', '0'),
+(57, 18, 0, 'media_1470507180.jpg', 'XX1', '0'),
+(63, 18, 1, 'test', '6', '0'),
+(77, 17, 0, '', 'rrrttt', '0'),
+(79, 13, 0, 'media_1473609306_9.png', 'xxxx', '0'),
+(75, 17, 0, 'media_1473533036.png', 'xxxxx', '0'),
+(74, 17, 0, 'media_1473533036.png', 'ccc', '0'),
+(73, 17, 0, 'media_1470465516.jpg', 'Testing Image ', '0'),
+(80, 13, 0, 'media_1473609306_9.png', 'xx', '0'),
+(81, 13, 0, 'media_1473609306_9.png', 'x', '0'),
+(82, 13, 0, 'media_1473609306_6.png', 'x', '0'),
+(83, 13, 0, 'media_1473609306_5.png', 'xxx', '0'),
+(126, 12, 0, 'media_1473609574_10.png', 'xxxxxx', '0'),
+(125, 12, 0, 'media_1473609574_9.png', 'xxxxxx', '0'),
+(124, 12, 0, 'media_1473609574_6.png', 'xxxxxxxx', '0'),
+(123, 12, 0, 'media_1473609574_9.png', 'xxx', '0'),
+(122, 12, 0, 'media_1470862398.jpg', 'sdsds', '0'),
+(92, 35, 0, '', 'xx', '0'),
+(93, 35, 0, '', 'xx', '0'),
+(94, 35, 0, '', 'xx', '0'),
+(95, 35, 0, '', 'xx', '0'),
+(96, 35, 0, '', 'xx', '0'),
+(97, 35, 0, '', 'xx', '0'),
+(98, 35, 1, 'test', '332323', '0'),
+(107, 36, 0, 'media_1473610107_10.png', '434', '0'),
+(106, 36, 0, 'media_1473610107_8.png', '12', '0'),
+(108, 36, 0, 'media_1473610107_10.png', '3', '0'),
+(109, 36, 0, 'media_1473610107_9.png', '434', '0'),
+(110, 36, 0, 'media_1473610107_7.png', '34', '0'),
+(111, 36, 0, 'media_1473610107_5.png', '343', '0'),
+(112, 36, 0, 'media_1473610107_5.png', '4', '0'),
+(113, 37, 0, 'media_1473610321_8.png', 'x', '0'),
+(114, 37, 0, 'media_1473610321_5.png', 'ss', '0'),
+(115, 37, 0, 'media_1473610321_5.png', 'ww', '0'),
+(116, 37, 0, 'media_1473610321_8.png', 'www', '0'),
+(117, 37, 0, 'media_1473610321_7.png', 'wwww', '0'),
+(118, 37, 0, 'media_1473610321_7.png', 'wwwww', '0'),
+(119, 38, 0, 'media_1473852366_5.png', '', '0'),
+(121, 39, 0, 'media_1473853174_9.jpg', 'Test', '0'),
+(128, 12, 0, 'media_1473609574_10.png', 'Testing Image ', '0'),
+(129, 12, 1, 'test', 'xxxx', '0'),
+(130, 12, 0, 'media_1473862725_7.png', 'xcxcxcxc', '0'),
+(136, 40, 0, 'media_1473863890_6.jpg', 'xxx2', '0'),
+(135, 40, 0, 'media_1473863890_9.jpg', 'xxx1', '0'),
+(137, 40, 1, 'test', 'xxx3', '0'),
+(138, 40, 0, 'media_1473863969_6.jpg', 'xxxx44', '0'),
+(139, 41, 0, '', '', '0'),
+(140, 42, 0, '', '', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_periods`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_periods` (
+  `id` int(11) NOT NULL,
+  `timeline_value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `range_start` year(4) NOT NULL,
+  `range_end` year(4) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_timeline_periods`
+--
+
+INSERT INTO `ch_timeline_periods` (`id`, `timeline_value`, `range_start`, `range_end`) VALUES
+(1, 'test', 1999, 2007),
+(3, 'test2', 2016, 2015),
+(4, 'DIAMEN', 1978, 2016);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_ratings`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_ratings` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `rate` int(11) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_timeline_ratings`
+--
+
+INSERT INTO `ch_timeline_ratings` (`id`, `user_id`, `timeline_id`, `rate`) VALUES
+(16, 13, 13, 5),
+(15, 6, 37, 4),
+(14, 13, 37, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_timeline_reviews`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_timeline_reviews` (
+  `id` int(11) NOT NULL,
+  `timeline_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ch_users`
+--
+
+CREATE TABLE IF NOT EXISTS `ch_users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `dob` date NOT NULL,
+  `about_us` text COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `mobile_no` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `is_active` int(11) NOT NULL DEFAULT '1',
+  `type` enum('0','1') COLLATE utf8_unicode_ci NOT NULL COMMENT '0=users,1=admin',
+  `role_id` int(1) NOT NULL,
+  `occupation_id` int(11) NOT NULL,
+  `qualification_id` int(11) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `int_categories` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user_pic` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `expertise` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `social_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ch_users`
+--
+
+INSERT INTO `ch_users` (`id`, `username`, `password`, `first_name`, `last_name`, `dob`, `about_us`, `email`, `mobile_no`, `is_active`, `type`, `role_id`, `occupation_id`, `qualification_id`, `country_id`, `int_categories`, `user_pic`, `expertise`, `address`, `social_id`, `created`) VALUES
+(2, 'admin', '$2a$10$y8apPLm41qjWfBFMKISbG.wFvcvIkBPQ6QZ37Yd1PyPjEaGE9cW4e', 'admin', 'kr', '1980-07-07', 'this is testing', 'admin@123.com', '9878377602', 1, '1', 1, 1, 1, 1, '', '', '', '', '', '0000-00-00'),
+(4, '1', '$2a$10$g.We38x508RpKeoZ/8Fo9eYsH3fBt2TsQAmF0hC2xhuHPgLC1vccS', 'Rajnishgkww', 'kkrww', '1998-11-13', '', 'Test@test.com', '', 1, '0', 2, 0, 1, 0, '', 'user_1470337278.jpg', '', 'sssThis is testingsdsdwww', '', '2016-07-30'),
+(5, '1', '$2a$10$ONMsOJ3lQjzxBPJX0DgiSer080IcCuC8nOfiF/1xnqwblqx5G9fZ2', 'ehidiamen', 'ebhomielen', '1978-06-21', '', 'mcdozier@hotmail.com', '', 1, '0', 2, 0, 2, 0, '', 'user_1469945885.JPG', '', 'apt 27 the links \r\nmerrion road\r\nDublin 4', '', '2016-07-31'),
+(8, '1', '$2a$10$OJrfXiuOdx8rP7MxA1a4S.vJ7RbQ0FvvD/fd55G6yMSI3ixII4OnG', 'osagie', 'ebhomielen', '1978-06-21', '', 'mcdozier1@aol.com', '', 1, '0', 2, 0, 2, 0, '', '', '', 'apt 27 the links dublin 4', '', '2016-08-08'),
+(6, '1', '$2a$10$qdRKTKC4czbYSP0RLe8ZPOpAuUL0kuQl6.blhsmun8RkHDCuk1h/K', 'Deepshikha', 'Soni', '1983-06-05', '', 'soni.dshikha@gmail.com', '', 1, '0', 2, 0, 1, 0, '', 'user_1470294133.jpg', '', 'Ratanada, Jodhpur', '', '2016-08-04'),
+(13, '1', '$2a$10$SKvQGAQoasWnk9qUXN2zkeraPTcxpJXtajJoKgtKD/FwWgbA46G8.', 'jatin', 'tomar', '1987-03-24', '', 'jatin95017@gmail.com', '', 1, '0', 2, 0, 2, 0, '', 'user_1473611392_10.jpg', '', 'This is not testing and testing address.', '', '2016-08-22');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ch_articles`
+--
+ALTER TABLE `ch_articles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_article_discussion_boards`
+--
+ALTER TABLE `ch_article_discussion_boards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_article_media`
+--
+ALTER TABLE `ch_article_media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_article_ratings`
+--
+ALTER TABLE `ch_article_ratings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_article_reviews`
+--
+ALTER TABLE `ch_article_reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_categories`
+--
+ALTER TABLE `ch_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_categories_old`
+--
+ALTER TABLE `ch_categories_old`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_contact`
+--
+ALTER TABLE `ch_contact`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_countries`
+--
+ALTER TABLE `ch_countries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_fav_timelines`
+--
+ALTER TABLE `ch_fav_timelines`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_feeds`
+--
+ALTER TABLE `ch_feeds`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_qualifications`
+--
+ALTER TABLE `ch_qualifications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_roles`
+--
+ALTER TABLE `ch_roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timelines`
+--
+ALTER TABLE `ch_timelines`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_boards`
+--
+ALTER TABLE `ch_timeline_boards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_discussion_board`
+--
+ALTER TABLE `ch_timeline_discussion_board`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_formats`
+--
+ALTER TABLE `ch_timeline_formats`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_likes`
+--
+ALTER TABLE `ch_timeline_likes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_media`
+--
+ALTER TABLE `ch_timeline_media`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_periods`
+--
+ALTER TABLE `ch_timeline_periods`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_ratings`
+--
+ALTER TABLE `ch_timeline_ratings`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_timeline_reviews`
+--
+ALTER TABLE `ch_timeline_reviews`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ch_users`
+--
+ALTER TABLE `ch_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `ch_articles`
+--
+ALTER TABLE `ch_articles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+--
+-- AUTO_INCREMENT for table `ch_article_discussion_boards`
+--
+ALTER TABLE `ch_article_discussion_boards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `ch_article_media`
+--
+ALTER TABLE `ch_article_media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=168;
+--
+-- AUTO_INCREMENT for table `ch_article_ratings`
+--
+ALTER TABLE `ch_article_ratings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `ch_article_reviews`
+--
+ALTER TABLE `ch_article_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ch_categories`
+--
+ALTER TABLE `ch_categories`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=125;
+--
+-- AUTO_INCREMENT for table `ch_categories_old`
+--
+ALTER TABLE `ch_categories_old`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `ch_contact`
+--
+ALTER TABLE `ch_contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+--
+-- AUTO_INCREMENT for table `ch_countries`
+--
+ALTER TABLE `ch_countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=250;
+--
+-- AUTO_INCREMENT for table `ch_fav_timelines`
+--
+ALTER TABLE `ch_fav_timelines`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `ch_feeds`
+--
+ALTER TABLE `ch_feeds`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `ch_qualifications`
+--
+ALTER TABLE `ch_qualifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `ch_roles`
+--
+ALTER TABLE `ch_roles`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `ch_timelines`
+--
+ALTER TABLE `ch_timelines`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+--
+-- AUTO_INCREMENT for table `ch_timeline_boards`
+--
+ALTER TABLE `ch_timeline_boards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `ch_timeline_discussion_board`
+--
+ALTER TABLE `ch_timeline_discussion_board`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ch_timeline_formats`
+--
+ALTER TABLE `ch_timeline_formats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ch_timeline_likes`
+--
+ALTER TABLE `ch_timeline_likes`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=59;
+--
+-- AUTO_INCREMENT for table `ch_timeline_media`
+--
+ALTER TABLE `ch_timeline_media`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=141;
+--
+-- AUTO_INCREMENT for table `ch_timeline_periods`
+--
+ALTER TABLE `ch_timeline_periods`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `ch_timeline_ratings`
+--
+ALTER TABLE `ch_timeline_ratings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `ch_timeline_reviews`
+--
+ALTER TABLE `ch_timeline_reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ch_users`
+--
+ALTER TABLE `ch_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
